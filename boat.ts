@@ -1,7 +1,7 @@
 function CanTravelTo(gameMatrix : boolean[][], fromRow : number, fromColumn : number, toRow : number, toColumn : number) : boolean
     {
         const rows : number = gameMatrix[0].length;
-        const cols : number = gameMatrix[0].length;
+        const cols : number = gameMatrix[1].length;
 
         // Check boundaries
         if (fromRow < 0 || fromRow >= rows || toRow < 0 || toRow >= rows 
