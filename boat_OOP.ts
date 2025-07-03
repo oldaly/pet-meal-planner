@@ -1,7 +1,16 @@
-function CanTravelTo(gameMatrix : boolean[][], fromRow : number, fromColumn : number, toRow : number, toColumn : number) : boolean
+class Boat
+{
+    private gameMatrix: boolean[][];
+
+    constructor(gameMatrix: boolean[][]) {
+    this.gameMatrix = gameMatrix;
+    }
+
+
+    canTravelTo(fromRow : number, fromColumn : number, toRow : number, toColumn : number) : boolean
     {
-        const rows : number = gameMatrix[0].length;
-        const cols : number = gameMatrix[1].length;
+        const rows : number = this.gameMatrix[0].length;
+        const cols : number = this.gameMatrix[1].length;
 
         // Check boundaries
         if (fromRow < 0 || fromRow >= rows || toRow < 0 || toRow >= rows 
@@ -13,7 +22,7 @@ function CanTravelTo(gameMatrix : boolean[][], fromRow : number, fromColumn : nu
             return false;
 
         // Start and destination must be water
-        if (!gameMatrix[fromRow][fromColumn] || !gameMatrix[toRow][toColumn]) 
+        if (!this.gameMatrix[fromRow][fromColumn] || !this.gameMatrix[toRow][toColumn]) 
             return false;
 
         // If move is not purely horizontal or vertical, return false
@@ -28,7 +37,7 @@ function CanTravelTo(gameMatrix : boolean[][], fromRow : number, fromColumn : nu
 
             for (let row = startRow; row <= endRow; row++)
             {
-                if (!gameMatrix[row][fromColumn])
+                if (!this.gameMatrix[row][fromColumn])
                     return false;
             }
         }
@@ -40,7 +49,7 @@ function CanTravelTo(gameMatrix : boolean[][], fromRow : number, fromColumn : nu
 
             for (let col = startColumn; col <= endColumn; col++)
             {
-                if (!gameMatrix[fromRow][col])
+                if (!this.gameMatrix[fromRow][col])
                     return false;
             }
         }
@@ -48,9 +57,11 @@ function CanTravelTo(gameMatrix : boolean[][], fromRow : number, fromColumn : nu
         return true;
     }
 
-    /*function main()
+}
+
+function main()
     {
-        const gameMatrix : boolean[][] = 
+        const matrix : boolean[][] = 
         [
             [false, true,  true,  false, false, false],
             [true,  true,  true,  false, false, false],
@@ -60,11 +71,12 @@ function CanTravelTo(gameMatrix : boolean[][], fromRow : number, fromColumn : nu
             [false, false, false, false, false, false],
         ];
 
-        console.log(CanTravelTo(gameMatrix, 3, 2, 2, 2)); // true
-        console.log(CanTravelTo(gameMatrix, 3, 2, 3, 2)); // false - same cell
-        console.log(CanTravelTo(gameMatrix, 3, 2, 6, 2)); // false - out of bounds
+        const boat = new Boat(matrix);
+
+        console.log(boat.canTravelTo(3, 2, 2, 2)); // true
+        console.log(boat.canTravelTo(3, 2, 3, 2)); // false - same cell
+        console.log(boat.canTravelTo(3, 2, 6, 2)); // false - out of bounds
 
     }
 
-    main();*/
-
+    main();
