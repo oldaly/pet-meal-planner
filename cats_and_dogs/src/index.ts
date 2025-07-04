@@ -40,7 +40,7 @@ mealPlan.generateAll();
 mealPlan.printAll();
     
 
-petService.updateProfile("Milo", {age: 6, weight: 6 });
+mealPlan.updateProfile("Milo", {age: 6, weight: 6 });
 const updatedPet = pets.find(f => f.name = "Milo");
 console.log(`Pet with name ${updatedPet?.name} has been updated: age: ${updatedPet?.age}, weight: ${updatedPet?.weight}`);
     

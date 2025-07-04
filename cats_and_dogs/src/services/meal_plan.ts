@@ -30,4 +30,20 @@ export class MealPlan{
 
     }
 
+    updateProfile(name: string, petData: Partial<Pet> ){
+        const pet = this.pets.getAll().find(f => f.name === name);
+        if (!pet){
+            throw new Error(`Pet name ${name} not found`);
+        }
+        Object.assign(pet, petData);
+
+        const petExtended = this.petsExtended.find(([pet, meals]) => pet.name === name);
+        if (!petExtended){
+            throw new Error(`Pet name ${name} not found`);
+        }
+        Object.assign(petExtended[0], petData);
+        petExtended[1] = this.generateMealPlan(petExtended[0]);
+
+    }
+
 }

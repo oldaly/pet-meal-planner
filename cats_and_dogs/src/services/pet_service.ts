@@ -10,12 +10,5 @@ export class PetService
         return this.pets;
     }
 
-    updateProfile(name: string, petData: Partial<Pet> ){
-        const pet = this.pets.find(f => f.name = name);
-        if (!pet){
-            throw new Error(`Pet name ${name} not found`);
-        }
-        Object.assign(pet, petData);
-
-    }
+    
 }
