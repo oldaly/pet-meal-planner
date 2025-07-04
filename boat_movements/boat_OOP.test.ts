@@ -1,4 +1,4 @@
-import { Boat } from './boat_OOP'; // adjust if your filename is different
+import { Boat } from '../boat_movements/boat_OOP'; // adjust if your filename is different
 
 describe('Boat Movement Tests', () => {
     const matrix: boolean[][] = [
