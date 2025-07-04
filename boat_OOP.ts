@@ -1,4 +1,4 @@
-class Boat
+export class Boat
 {
     private gameMatrix: boolean[][];
 
