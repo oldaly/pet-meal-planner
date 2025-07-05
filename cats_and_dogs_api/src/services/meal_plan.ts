@@ -42,6 +42,7 @@ export class MealPlan{
             throw new Error(`Pet name ${name} not found`);
         }
         Object.assign(petExtended[0], petData);
+        petExtended[0].mealType = petExtended[0].getAllowedMealTypes();
         petExtended[1] = this.generateMealPlan(petExtended[0]);
 
     }

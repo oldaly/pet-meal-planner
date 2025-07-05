@@ -1,6 +1,7 @@
 import { Pet } from "./models/pet";
 import { MealPlan } from "./services/meal_plan";
 import { PetService } from "./services/pet_service";
+import { MealType } from "./models/pet";
 
 const petData = [
   {
@@ -10,7 +11,7 @@ const petData = [
     weight: 20,
     activityLevel: "moderate",
     dietaryRestrictions: ["grain-free"], 
-    mealType: "sensitive"
+    mealType: []
   },
   {
     name: "Milo",
@@ -19,7 +20,7 @@ const petData = [
     weight: 5,
     activityLevel: "low",
     dietaryRestrictions: [],
-    mealType: "regular"
+    mealType: []
   }
 ];
 
@@ -29,7 +30,7 @@ const pets = petData.map(p => new Pet(p.name,
     p.weight, 
     p.activityLevel as "low" | "moderate" | "high",
     p.dietaryRestrictions,
-    p.mealType as "regular" | "sensitive" | "puppy/kitten"));
+    p.mealType as MealType[]));
 
 
 const petService = new PetService(pets);

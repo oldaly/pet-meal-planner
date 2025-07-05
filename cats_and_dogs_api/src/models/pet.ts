@@ -1,4 +1,4 @@
-type MealType = "regular" | "sensitive" | "puppy/kitten";
+export type MealType = "regular" | "sensitive" | "puppy/kitten";
 const defaultMeal: MealType = "regular";
 
 
@@ -18,7 +18,7 @@ export class Pet {
     public weight: number,
     public activityLevel: "low" | "moderate" | "high",
     public dietaryRestrictions: string[],
-    public mealType: "regular" | "sensitive" | "puppy/kitten"
+    public mealType: MealType[]
   ) {}
 
   calculateCalories(): number {
@@ -43,7 +43,7 @@ export class Pet {
   return this.weight * multiplier;
 }
 
- getAllowedMealTypes(): MealType[] {
+ public getAllowedMealTypes(): MealType[] {
     if (this.dietaryRestrictions.length == 0) return [defaultMeal];
    const allowed = new Set<MealType>();
 

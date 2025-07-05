@@ -9,8 +9,8 @@ describe("🐾 Integration Test: PetService + MealPlan + Pet", () => {
 
   beforeEach(() => {
     pets = [
-      new Pet("Luna", 3, "dog", 20, "moderate", ["grain-free"], "sensitive"),
-      new Pet("Milo", 5, "cat", 5, "low", [], "regular")
+      new Pet("Luna", 3, "dog", 20, "moderate", ["grain-free"], ["sensitive"]),
+      new Pet("Milo", 5, "cat", 5, "low", [], ["regular"])
     ];
     service = new PetService(pets);
     planner = new MealPlan(service);

@@ -3,7 +3,7 @@ import { PetService } from "./pet_service";
 import { MealPlan } from "./meal_plan";
 
 describe("MealPlan", () => {
-  const pet = new Pet("Luna", 3, "dog", 20, "moderate", [], "regular");
+  const pet = new Pet("Luna", 3, "dog", 20, "moderate", [], ["regular"]);
   const service = new PetService([pet]);
   const planner = new MealPlan(service);
 

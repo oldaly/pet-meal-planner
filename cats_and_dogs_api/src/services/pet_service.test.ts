@@ -2,7 +2,7 @@ import { PetService } from "./pet_service";
 import { Pet } from "../models/pet";
 
 describe("PetService", () => {
-  const pet = new Pet("Luna", 3, "dog", 20, "moderate", [], "regular");
+  const pet = new Pet("Luna", 3, "dog", 20, "moderate", [], ["regular"]);
   let service: PetService;
 
   beforeEach(() => {
