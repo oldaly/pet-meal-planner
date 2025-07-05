@@ -56,7 +56,7 @@
     app.use(express.json());
 
     app.get("/", (req, res) => {
-    res.send("🐾 Welcome to Cats & Dogs API!");
+    res.send("🐾 Welcome to the Cats & Dogs API!");
     });
 
     app.use("/api", petRoutes(petService, mealPlan));
