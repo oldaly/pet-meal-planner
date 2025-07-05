@@ -4,15 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "test": "jest",
-  "start": "ts-node boat_movements/boat_OOP.ts",
-  "start:boat": "ts-node boat_movements/boat_OOP.ts",
-  "start:robot": "ts-node robot_grid/robot.ts",
-  "build:pet": "tsc -p cats_and_dogs_api/tsconfig.json",
-  "start:pet": "node cats_and_dogs_api/dist/server.js"
-},
-
-
+    "test": "jest",
+    "start": "ts-node boat_movements/boat_OOP.ts",
+    "start:boat": "ts-node boat_movements/boat_OOP.ts",
+    "start:robot": "ts-node robot_grid/robot.ts",
+    "build:pet": "tsc -p cats_and_dogs_api/tsconfig.json",
+    "start:pet": "node cats_and_dogs_api/dist/server.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,5 +22,8 @@
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5"
   }
 }

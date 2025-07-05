@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./cats_and_dogs_api" },
+    { "path": "./cats-and-dogs-ui" },
+    { "path": "./boat_movements" },
+    { "path": "./robot_grid" }
+  ]
+}

@@ -1,10 +1,13 @@
     // src/server.ts
-    import express from "express";
     import petRoutes from "./routes/petRoutes";
     import { Pet } from "./models/pet";
     import { PetService } from "./services/pet_service";
     import { MealType } from "./models/pet";
-import { MealPlan } from "./services/meal_plan";
+    import { MealPlan } from "./services/meal_plan";
+    import express from "express";
+    import cors from "cors";
+
+
 
     const petData = [
     {
@@ -49,6 +52,7 @@ import { MealPlan } from "./services/meal_plan";
 
 
     const app = express();
+    app.use(cors());
     app.use(express.json());
 
     app.get("/", (req, res) => {
@@ -58,6 +62,12 @@ import { MealPlan } from "./services/meal_plan";
     app.use("/api", petRoutes(petService, mealPlan));
 
     const PORT = process.env.PORT || 3000;
+
+    if (require.main === module) {
     app.listen(PORT, () => {
-    console.log(`🐾 API is running on port ${PORT}`);
+        console.log(`🐾 API is running on port ${PORT}`);
     });
+    }
+
+export default app;
+
