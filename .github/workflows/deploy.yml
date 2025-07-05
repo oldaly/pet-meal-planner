@@ -25,17 +25,20 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        working-directory: ./cats_and_dogs_api
-        run: npm ci
+        run: |
+          cd cats_and_dogs_api
+          npm ci
 
       - name: Build project
-        working-directory: ./cats_and_dogs_api
-        run: npm run build
+        run: |
+          cd cats_and_dogs_api
+          npm run build
 
       - name: Clean and zip deployment package
         run: |
-          rm -f app.zip
-          zip -r app.zip cats_and_dogs_api -x "cats_and_dogs_api/node_modules/*" "cats_and_dogs_api/.git/*" "cats_and_dogs_api/.github/*"
+          cd cats_and_dogs_api
+          rm -f ../app.zip
+          zip -r ../app.zip . -x "node_modules/*" ".git/*" ".github/*"
 
       - name: Debug - list app.zip contents
         run: unzip -l app.zip
