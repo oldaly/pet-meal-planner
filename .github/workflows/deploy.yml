@@ -24,7 +24,7 @@ jobs:
 
       - name: Generate deployment package
         run: |
-          zip -r app.zip . -x "**/node_modules/*" "**/.git/*"
+          zip -r app.zip . -x "**/node_modules/*" "**/.git/*" "**/.github/*" "**/AWSCLIV2.pkg"
 
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v21
