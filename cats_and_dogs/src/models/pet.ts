@@ -22,11 +22,23 @@ export class Pet {
   ) {}
 
   calculateCalories(): number {
-  const multiplier = {
+    let multiplier: number = 0;
+    switch (this.activityLevel){
+                case "low": 
+                     multiplier = 30;
+                    break;
+                case "moderate":
+                    multiplier = 40;
+                    break;
+                case "high":
+                    multiplier = 50;
+                    break;
+    }
+  /*const multiplier = {
     low: 30,
     moderate: 40,
     high: 50
-  }[this.activityLevel];
+  }[this.activityLevel];*/
 
   return this.weight * multiplier;
 }

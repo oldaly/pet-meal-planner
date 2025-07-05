@@ -9,7 +9,7 @@ const petData = [
     age: 3,
     weight: 20,
     activityLevel: "moderate",
-    dietaryRestrictions: ["grain-free"],
+    dietaryRestrictions: ["grain-free"], 
     mealType: "sensitive"
   },
   {
