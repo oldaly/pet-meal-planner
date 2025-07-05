@@ -11,20 +11,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout source
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate deployment package
+      - name: Build project
+        run: npm run build
+
+      - name: Zip deployment package (including Dockerfile)
         run: |
           zip -r app.zip . -x "**/node_modules/*" "**/.git/*" "**/.github/*" "**/AWSCLIV2.pkg"
+
+      - name: Debug: Show what's in app.zip
+        run: unzip -l app.zip
 
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v21
