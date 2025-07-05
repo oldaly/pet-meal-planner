@@ -4,6 +4,8 @@
   "description": "🐾 Lyka Live Coding Challenge — \"Meal Planner for Pets\"",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
     "test": "jest"
   },
   "keywords": [],
@@ -11,6 +13,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0"
   },
   "devDependencies": {
