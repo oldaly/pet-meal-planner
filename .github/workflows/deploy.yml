@@ -14,7 +14,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -25,11 +25,16 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Zip deployment package (including Dockerfile)
+      - name: Clean and zip deployment package
         run: |
-          zip -r app.zip . -x "**/node_modules/*" "**/.git/*" "**/.github/*" "**/AWSCLIV2.pkg"
+          rm -f app.zip
+          zip -r app.zip . \
+            -x "**/node_modules/*" \
+               "**/.git/*" \
+               "**/.github/*" \
+               "**/AWSCLIV2.pkg"
 
-      - name: Debug: Show what's in app.zip
+      - name: Debug: Show contents of app.zip
         run: unzip -l app.zip
 
       - name: Deploy to Elastic Beanstalk
