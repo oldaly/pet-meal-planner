@@ -1,71 +1,121 @@
-🐾 "Meal Planner for Pets"
+# 🐾 Pets Meal Planner
 
-🟢 Scenario
-A pet company delivers fresh pet meals. Your task is to build a basic system that creates personalized meal plans based on each pet's profile.
+A full-stack TypeScript app to manage dog and cat meal plans based on age, weight, activity level, and dietary restrictions.
 
-✅ Part 1 – Base Functionality (~25 mins)
-Create a program that:
+---
 
-Accepts a list of pets with the following attributes:
-name: string
-species: "dog" | "cat"
-age: number (in years)
-weight: number (in kg)
-activityLevel: "low" | "moderate" | "high"
-Calculates daily calorie needs using this formula:
-Base Calorie Need = weight * multiplier
+## 🚀 Features
 
-Multiplier:
-- low: 30
-- moderate: 40
-- high: 50
-Outputs each pet’s:
-Name
-Species
-Daily calorie requirement
-🟡 Part 2 – Extend the Logic (~15 mins)
-Now add:
+- Add new pets (dogs or cats)
+- Auto-calculate daily calorie needs
+- Determine allowed meal types based on dietary restrictions
+- Filter pets by species, age range, and meal type
+- Responsive React UI
+- Dockerized for easy local setup
+- Deployed via GitHub Actions
 
-Function to generate a weekly meal plan (7 days), with each day's calories split into 2 meals.
-Each meal can be represented like:
+---
+
+## 🌐 Live Demo
+
+- **Frontend (S3 + static website hosting)**  
+  📍 http://cats-and-dogs-ui.s3-website-ap-southeast-2.amazonaws.com/index.html
+
+- **Backend (Elastic Beanstalk)**  
+  📍 http://cats-and-dogs-api-env.eba-rdmt69m3.ap-southeast-2.elasticbeanstalk.com/api/pets
+
+---
+
+## 🖼️ Tech Stack
+
+- **Frontend**: React + TypeScript
+- **Backend**: Express + TypeScript
+- **Deployment**: AWS S3 (UI), AWS Elastic Beanstalk (API)
+- **CI/CD**: GitHub Actions
+- **Containerization**: Docker
+- **Future-Ready**: Supports deployment to AWS Lambda, EC2, or any Docker-compatible service
+
+---
+
+## 🧠 Meal Type Logic
+
+Allowed meal types are based on dietary restrictions:
+
+| Restriction     | Meal Types Allowed        |
+|----------------|---------------------------|
+| grain-free     | sensitive                 |
+| low-fat        | sensitive                 |
+| high-protein   | regular, puppy/kitten     |
+| puppy-formula  | puppy/kitten              |
+| *(none)*       | regular (default)         |
+
+---
+
+## 🧪 API Examples
+
+### ➕ Add a Pet
+```http
+POST /api/pets
+Content-Type: application/json
+
 {
-  day: "Monday",
-  meals: [350, 350] // in kcal
+  "name": "Bella",
+  "ageInMonths": 18,
+  "species": "cat",
+  "weight": 4,
+  "activityLevel": "moderate",
+  "dietaryRestrictions": ["puppy-formula", "grain-free"]
 }
-🔵 Part 3 – Add Constraints (~10 mins)
-Add a field dietaryRestrictions: string[] (e.g., ["grain-free", "low-fat"])
-Add a field mealType: "regular" | "sensitive" | "puppy/kitten"
-Based on restrictions, filter the available meal types for each pet and assign the most appropriate.
-🔴 Optional Stretch (~10 mins)
-Implement function: updatePetProfile(name: string, newData: Partial<Pet>) that updates a pet’s profile and recalculates the meal plan.
-📤 Output Example
-Pet: Luna (dog)
-Calories/day: 1000
-Meal Plan:
-- Monday: [500, 500]
-- Tuesday: [500, 500]
-...
 
-Dietary: [grain-free]
-Meal Type: sensitive
-🧪 Sample Input
-[
-  {
-    name: "Luna",
-    species: "dog",
-    age: 3,
-    weight: 20,
-    activityLevel: "moderate",
-    dietaryRestrictions: ["grain-free"],
-    mealType: "sensitive"
-  },
-  {
-    name: "Milo",
-    species: "cat",
-    age: 5,
-    weight: 5,
-    activityLevel: "low",
-    dietaryRestrictions: [],
-    mealType: "regular"
-  }
-]
+🔍 Get Pets with Filters
+
+GET /api/pets?species=dog&minAge=12&maxAge=60&allowedMeals=sensitive
+
+🐳 Docker Setup
+Build the image
+docker build -t cats-dogs-api .
+Run the container
+docker run -p 3000:3000 cats-dogs-api
+Optional: Run in detached mode
+docker run -d -p 3000:3000 cats-dogs-api
+Stop all running containers
+docker ps       # find the container ID
+docker stop <container_id>
+
+
+# App available at:
+http://localhost:5173
+
+🛠 Local Development (without Docker)
+
+Backend
+
+cd cats_and_dogs_api
+npm install
+npm run build
+npm run start
+
+Frontend
+
+cd cats-and-dogs-ui
+npm install
+npm run dev
+
+🔁 GitHub Actions CI/CD
+
+Automatic deployment on push to main:
+Frontend → AWS S3
+Backend → AWS Elastic Beanstalk
+Easily extendable to support:
+AWS Lambda (via API Gateway)
+AWS EC2 (via Docker)
+GitHub Pages (for frontend only)
+
+🔀 Branch Strategy
+main: Production-ready, deployable via GitHub Actions
+dev: Ongoing development and testing
+
+📄 License
+MIT License.
+
+
