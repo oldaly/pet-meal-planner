@@ -1,7 +1,7 @@
 {
   "name": "cats_and_dogs",
   "version": "1.0.0",
-  "description": "🐾 Lyka Live Coding Challenge — \"Meal Planner for Pets\"",
+  "description": "🐾 \"Meal Planner for Pets\"",
   "main": "index.js",
   "scripts": {
     "build": "tsc",

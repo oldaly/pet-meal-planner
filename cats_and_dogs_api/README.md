@@ -1,7 +1,7 @@
-🐾 Lyka Live Coding Challenge — "Meal Planner for Pets"
+🐾 "Meal Planner for Pets"
 
 🟢 Scenario
-Lyka delivers fresh pet meals. Your task is to build a basic system that creates personalized meal plans based on each pet's profile.
+A pet company delivers fresh pet meals. Your task is to build a basic system that creates personalized meal plans based on each pet's profile.
 
 ✅ Part 1 – Base Functionality (~25 mins)
 Create a program that:
