@@ -13,12 +13,15 @@ interface Pet {
   calculateCalories: number;
 }
 
+const mealTypeOptions = ["regular", "sensitive", "puppy/kitten"];
+
 export default function App() {
   const [pets, setPets] = useState<Pet[]>([]);
   const [loading, setLoading] = useState(true);
   const [species, setSpecies] = useState("");
   const [minAge, setMinAge] = useState("");
   const [maxAge, setMaxAge] = useState("");
+  const [allowedMeals, setAllowedMeals] = useState("");
 
   const [newName, setNewName] = useState("");
   const [newAge, setNewAge] = useState("");
@@ -28,9 +31,6 @@ export default function App() {
   const [newDietaryRestrictions, setNewDietaryRestrictions] = useState("");
 
   const [addMessage, setAddMessage] = useState("");
-
-  
-
 
   function getCalorieColor(calories: number): string {
   if (calories < 500) return "green";
@@ -65,6 +65,7 @@ export default function App() {
   if (species) queryParams.append("species", species);
   if (minAge) queryParams.append("minAge", minAge);
   if (maxAge) queryParams.append("maxAge", maxAge);
+  if (allowedMeals) queryParams.append("allowedMeals", allowedMeals);
 
   const res = await fetch(`http://localhost:3000/api/pets?${queryParams.toString()}`);
   const data = await res.json();
@@ -192,6 +193,15 @@ export default function App() {
       value={maxAge}
       onChange={(e) => setMaxAge(e.target.value)}
     />
+
+    <select value={allowedMeals} onChange={e => setAllowedMeals(e.target.value)}>
+  <option value="">Select meal type</option>
+  {mealTypeOptions.map(type => (
+    <option key={type} value={type}>
+      {type}
+    </option>
+  ))}
+</select>
 
     <button type="submit">Filter</button>
   </form>

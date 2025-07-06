@@ -29,11 +29,12 @@ export default function petRoutes(petService: PetService, mealPlan: MealPlan) {
         const species = req.query.species as string | undefined;
         const minAgeInMonths = req.query.minAge as number | undefined;
         const maxAgeInMonths = req.query.maxAge as number | undefined;
+        const allowedMeals = req.query.allowedMeals as string | undefined;
 
-        const filter: PetFilter = {species, minAgeInMonths, maxAgeInMonths};
+        const filter: PetFilter = {species, minAgeInMonths, maxAgeInMonths, allowedMeals};
         let pets = petService.getAll();
 
-        if (species || minAgeInMonths != undefined || maxAgeInMonths != undefined){
+        if (species || minAgeInMonths != undefined || maxAgeInMonths != undefined || allowedMeals){
 
             pets = petService.getFilteredPets(filter);
         }

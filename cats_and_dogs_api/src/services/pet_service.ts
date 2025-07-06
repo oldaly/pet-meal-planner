@@ -1,10 +1,11 @@
-import { Pet } from "../models/pet"
+import { MealType, Pet } from "../models/pet"
 import { MealPlan } from "./meal_plan";
 type Species = "cat" | "dog";
 export interface PetFilter{
     species?: string;
     minAgeInMonths? : number;
     maxAgeInMonths? : number;
+    allowedMeals?: string;
 }
 export class PetService
 {
@@ -22,6 +23,8 @@ export class PetService
             if (filter.species && pet.species !== filter.species) return false;
             if (filter.minAgeInMonths !== undefined && pet.ageInMonths < filter.minAgeInMonths) return false;
             if (filter.maxAgeInMonths !== undefined && pet.ageInMonths > filter.maxAgeInMonths) return false;
+            if (filter.allowedMeals && ! pet.getAllowedMealTypes()
+                .includes(filter.allowedMeals as MealType)) return false;
             return true;
             
             }
