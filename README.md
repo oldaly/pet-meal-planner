@@ -32,3 +32,4 @@ You are given:
 
 ```csharp
 public static bool CanTravelTo(bool[,] gameMatrix, int fromRow, int fromColumn, int toRow, int toColumn)
+
