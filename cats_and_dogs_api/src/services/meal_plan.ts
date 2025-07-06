@@ -11,7 +11,7 @@ export class MealPlan{
 
     generateMealPlan(pet : Pet): DailyMeal[]{
         const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-        const caloriesPerMeal = pet.calculateCalories() / 2;
+        const caloriesPerMeal = pet.calculateCalories / 2;
         return daysOfWeek.map(d => [d, [caloriesPerMeal,caloriesPerMeal]]);
     }
     generateAll(){
@@ -19,7 +19,7 @@ export class MealPlan{
     }
     printAll(){
         for (const [pet, meals] of this.petsExtended){
-            console.log(`Pet ${pet.name} needs ${pet.calculateCalories()} calories per day`);
+            console.log(`Pet ${pet.name} needs ${pet.calculateCalories} calories per day`);
             
             for (const [day,[meal1,meal2]] of meals)
             {

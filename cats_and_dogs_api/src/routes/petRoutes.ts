@@ -13,16 +13,16 @@ export default function petRoutes(petService: PetService, mealPlan: MealPlan) {
     router.post("/pets", (req, res) => {
     const pet = new Pet(
         req.body.name,
-        req.body.age,
-        req.body.type,
+        req.body.ageInMonths,
+        req.body.species,
         req.body.weight,
         req.body.activityLevel,
         req.body.dietaryRestrictions,
-        req.body.mealType
     );
-
+    pet.mealType = pet.getAllowedMealTypes();
     petService.addPet(pet);
-    res.status(201).json({ message: "Pet added", pet });
+    res.status(201).json(pet);
+
     });
 
     router.get("/pets", (req, res) => {

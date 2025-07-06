@@ -3,7 +3,7 @@ import { Pet } from "./pet";
 describe("Pet", () => {
   it("calculates calories correctly", () => {
     const pet = new Pet("Luna", 3, "dog", 20, "moderate", [], ["regular"]);
-    expect(pet.calculateCalories()).toBe(800); // 20 * 40
+    expect(pet.calculateCalories).toBe(800); // 20 * 40
   });
 
   it("returns default meal type when no dietary restrictions", () => {

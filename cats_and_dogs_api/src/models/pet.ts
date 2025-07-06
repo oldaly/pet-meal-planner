@@ -18,7 +18,7 @@ export class Pet {
     public weight: number,
     public activityLevel: "low" | "moderate" | "high",
     public dietaryRestrictions: string[],
-    public mealType: MealType[]
+    public mealType: MealType[] = []
   ) {}
 
   get ageInYears(): string{
@@ -27,7 +27,13 @@ export class Pet {
     return `${years} year(s) ${months} month(s)`;
 
   }
-  calculateCalories(): number {
+  ageInYearsMethod(): string{
+    const years = Math.floor(this.ageInMonths/12);
+    const months = this.ageInMonths % 12;
+    return `${years} year(s) ${months} month(s)`;
+
+  }
+  get calculateCalories(): number {
     let multiplier: number = 0;
     switch (this.activityLevel){
                 case "low": 
@@ -73,7 +79,8 @@ export class Pet {
       dietaryRestrictions: this.dietaryRestrictions,
       mealType: this.mealType,
       ageInYears: this.ageInYears, 
+      calculateCalories: this.calculateCalories
     };
   }
-
 }
+

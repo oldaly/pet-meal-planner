@@ -30,6 +30,8 @@ export class PetService
     }
 
     addPet(pet: Pet){
+        pet.mealType = pet.getAllowedMealTypes();
+        pet.ageInYears
         this.pets.push(pet);
     }
 

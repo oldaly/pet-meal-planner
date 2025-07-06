@@ -13,22 +13,50 @@
     {
         name: "Luna",
         species: "dog",
-        ageInMonths: 25,
+        ageInMonths: 36,
         weight: 20,
         activityLevel: "moderate",
-        dietaryRestrictions: ["grain-free"], 
+        dietaryRestrictions: ["grain-free", "low-fat"], // should map to ["sensitive"]
         mealType: []
     },
     {
         name: "Milo",
         species: "cat",
-        ageInMonths: 62,
+        ageInMonths: 60,
         weight: 5,
         activityLevel: "low",
-        dietaryRestrictions: [],
+        dietaryRestrictions: [], // should default to ["regular"]
         mealType: []
-    }
-    ];
+    },
+    {
+        name: "Charlie",
+        species: "dog",
+        ageInMonths: 12,
+        weight: 8,
+        activityLevel: "high",
+        dietaryRestrictions: ["high-protein"], // maps to ["regular", "puppy/kitten"]
+        mealType: []
+    },
+    {
+        name: "Bella",
+        species: "cat",
+        ageInMonths: 18,
+        weight: 4,
+        activityLevel: "moderate",
+        dietaryRestrictions: ["puppy-formula", "grain-free"], // maps to ["puppy/kitten", "sensitive"]
+        mealType: []
+    },
+    {
+        name: "Max",
+        species: "dog",
+        ageInMonths: 48,
+        weight: 25,
+        activityLevel: "low",
+        dietaryRestrictions: ["low-fat", "high-protein"], // maps to ["sensitive", "regular", "puppy/kitten"]
+        mealType: []
+    },
+];
+
 
     const pets = petData.map(p => {
         const pet = new Pet(p.name, 

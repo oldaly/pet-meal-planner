@@ -43,7 +43,7 @@ describe("🐾 Integration Test: PetService + MealPlan + Pet", () => {
 
       expect(milo.ageInMonths).toBe(72);
       expect(milo.weight).toBe(6);
-      expect(milo.calculateCalories()).toBe(180);
+      expect(milo.calculateCalories).toBe(180);
     }
   });
 
