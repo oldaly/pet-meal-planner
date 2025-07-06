@@ -116,6 +116,6 @@ main: Production-ready, deployable via GitHub Actions
 dev: Ongoing development and testing
 
 📄 License
-MIT License.
+MIT License
 
 
