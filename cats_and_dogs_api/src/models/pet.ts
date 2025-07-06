@@ -63,6 +63,17 @@ export class Pet {
   return Array.from(allowed);
 }
 
-
+  toJSON() {
+    return {
+      name: this.name,
+      ageInMonths: this.ageInMonths,
+      species: this.species,
+      weight: this.weight,
+      activityLevel: this.activityLevel,
+      dietaryRestrictions: this.dietaryRestrictions,
+      mealType: this.mealType,
+      ageInYears: this.ageInYears, 
+    };
+  }
 
 }

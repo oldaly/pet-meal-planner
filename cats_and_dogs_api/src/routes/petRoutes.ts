@@ -3,6 +3,8 @@ import { Router } from "express";
 import { Pet } from "../models/pet";
 import { PetService } from "../services/pet_service";
 import { MealPlan } from "../services/meal_plan";
+import { PetFilter } from "../services/pet_service";
+import { ref } from "process";
 
 export default function petRoutes(petService: PetService, mealPlan: MealPlan) {
   const router = Router();
@@ -24,7 +26,19 @@ export default function petRoutes(petService: PetService, mealPlan: MealPlan) {
     });
 
     router.get("/pets", (req, res) => {
-    res.json(petService.getAll());
+        const species = req.query.species as string | undefined;
+        const minAgeInMonths = req.query.minAge as number | undefined;
+        const maxAgeInMonths = req.query.maxAge as number | undefined;
+
+        const filter: PetFilter = {species, minAgeInMonths, maxAgeInMonths};
+        let pets = petService.getAll();
+
+        if (species || minAgeInMonths != undefined || maxAgeInMonths != undefined){
+
+            pets = petService.getFilteredPets(filter);
+        }
+       
+        res.json(pets);
     });
 
     router.get("/pets/:name", (req, res) => {

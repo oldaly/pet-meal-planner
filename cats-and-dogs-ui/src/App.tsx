@@ -15,6 +15,24 @@ interface Pet {
 export default function App() {
   const [pets, setPets] = useState<Pet[]>([]);
   const [loading, setLoading] = useState(true);
+  const [species, setSpecies] = useState("");
+  const [minAge, setMinAge] = useState("");
+  const [maxAge, setMaxAge] = useState("");
+
+  const handleFilterSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  const queryParams = new URLSearchParams();
+
+  if (species) queryParams.append("species", species);
+  if (minAge) queryParams.append("minAge", minAge);
+  if (maxAge) queryParams.append("maxAge", maxAge);
+
+  const res = await fetch(`http://localhost:3000/api/pets?${queryParams.toString()}`);
+  const data = await res.json();
+  setPets(data); // or however you're storing the pets
+};
+
+
 
   useEffect(() => {
     fetch("http://localhost:3000/api/pets")
@@ -30,11 +48,37 @@ export default function App() {
   }, []);
 
   return (
+    
     <main className="p-6">
       <h2 className="text-3xl font-bold mb-4">🐾 Cats & Dogs Meal Planner</h2>
+      <form onSubmit={handleFilterSubmit}>
+    <select value={species} onChange={(e) => setSpecies(e.target.value)}>
+      <option value="">All</option>
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+    </select>
+
+    <input
+      type="number"
+      placeholder="Min Age (months)"
+      value={minAge}
+      onChange={(e) => setMinAge(e.target.value)}
+    />
+
+    <input
+      type="number"
+      placeholder="Max Age (months)"
+      value={maxAge}
+      onChange={(e) => setMaxAge(e.target.value)}
+    />
+
+    <button type="submit">Filter</button>
+  </form>
+
       {loading ? (
         <p>Loading...</p>
       ) : (
+        
         <ul className="space-y-4">
           {pets.map((pet) => (
             <li key={pet.name} className="border p-4 rounded-xl shadow-md">
