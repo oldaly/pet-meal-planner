@@ -54,6 +54,7 @@ Allowed meal types are based on dietary restrictions:
 ## 🧪 API Examples
 
 ### ➕ Add a Pet
+
 ```http
 POST /api/pets
 Content-Type: application/json
@@ -66,56 +67,89 @@ Content-Type: application/json
   "activityLevel": "moderate",
   "dietaryRestrictions": ["puppy-formula", "grain-free"]
 }
+```
 
-🔍 Get Pets with Filters
+### 🔍 Get Pets with Filters
 
+```http
 GET /api/pets?species=dog&minAge=12&maxAge=60&allowedMeals=sensitive
+```
 
-🐳 Docker Setup
-Build the image
+---
+
+## 🐳 Docker Setup
+
+**Build the image**
+
+```bash
 docker build -t cats-dogs-api .
-Run the container
+```
+
+**Run the container**
+
+```bash
 docker run -p 3000:3000 cats-dogs-api
-Optional: Run in detached mode
+```
+
+**Optional: Run in detached mode**
+
+```bash
 docker run -d -p 3000:3000 cats-dogs-api
-Stop all running containers
+```
+
+**Stop all running containers**
+
+```bash
 docker ps       # find the container ID
 docker stop <container_id>
+```
 
+---
 
-# App available at:
-http://localhost:5173
+## 🛠 Local Development (without Docker)
 
-🛠 Local Development (without Docker)
+### Backend
 
-Backend
-
+```bash
 cd cats_and_dogs_api
 npm install
 npm run build
 npm run start
+```
 
-Frontend
+### Frontend
 
+```bash
 cd cats-and-dogs-ui
 npm install
 npm run dev
+```
 
-🔁 GitHub Actions CI/CD
+> App available at:  
+> http://localhost:5173
 
-Automatic deployment on push to main:
-Frontend → AWS S3
-Backend → AWS Elastic Beanstalk
+---
+
+## 🔁 GitHub Actions CI/CD
+
+Automatic deployment on push to **main**:
+- Frontend → AWS S3  
+- Backend → AWS Elastic Beanstalk
+
 Easily extendable to support:
-AWS Lambda (via API Gateway)
-AWS EC2 (via Docker)
-GitHub Pages (for frontend only)
+- AWS Lambda (via API Gateway)
+- AWS EC2 (via Docker)
+- GitHub Pages (for frontend only)
 
-🔀 Branch Strategy
-main: Production-ready, deployable via GitHub Actions
-dev: Ongoing development and testing
+---
 
-📄 License
-MIT License.
+## 🔀 Branch Strategy
 
+- **main**: Production-ready, deployable via GitHub Actions  
+- **dev**: Ongoing development and testing
 
+---
+
+## 📄 License
+
+MIT License
