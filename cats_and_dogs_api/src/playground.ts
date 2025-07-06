@@ -7,7 +7,7 @@ const petData = [
   {
     name: "Luna",
     species: "dog",
-    age: 3,
+    ageInMonths: 36,
     weight: 20,
     activityLevel: "moderate",
     dietaryRestrictions: ["grain-free"], 
@@ -16,7 +16,7 @@ const petData = [
   {
     name: "Milo",
     species: "cat",
-    age: 5,
+    ageInMonths: 60,
     weight: 5,
     activityLevel: "low",
     dietaryRestrictions: [],
@@ -25,7 +25,7 @@ const petData = [
 ];
 
 const pets = petData.map(p => new Pet(p.name, 
-    p.age, 
+    p.ageInMonths, 
     p.species as "dog" | "cat", 
     p.weight, 
     p.activityLevel as "low" | "moderate" | "high",
@@ -41,7 +41,7 @@ mealPlan.generateAll();
 mealPlan.printAll();
     
 
-mealPlan.updateProfile("Milo", {age: 6, weight: 6 });
+mealPlan.updateProfile("Milo", {ageInMonths: 6, weight: 6 });
 const updatedPet = pets.find(f => f.name = "Milo");
-console.log(`Pet with name ${updatedPet?.name} has been updated: age: ${updatedPet?.age}, weight: ${updatedPet?.weight}`);
+console.log(`Pet with name ${updatedPet?.name} has been updated: age: ${updatedPet?.ageInMonths}, weight: ${updatedPet?.weight}`);
     
