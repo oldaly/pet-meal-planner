@@ -1,13 +1,10 @@
 {
-  "name": "boat_movements_ts",
+  "name": "pet-meal-planner",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "ts-node boat_movements/boat_OOP.ts",
-    "start:boat": "ts-node boat_movements/boat_OOP.ts",
-    "start:robot": "ts-node robot_grid/robot.ts",
     "build:pet": "tsc -p cats_and_dogs_api/tsconfig.json",
     "start:pet": "node cats_and_dogs_api/dist/server.js"
   },

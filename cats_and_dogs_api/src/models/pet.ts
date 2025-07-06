@@ -13,7 +13,7 @@ const dietaryToMealTypeMap = new Map<string, MealType[]>([
 export class Pet {
   constructor(
     public name: string,
-    public age: number,
+    public ageInMonths: number,
     public species: "dog" | "cat",
     public weight: number,
     public activityLevel: "low" | "moderate" | "high",
@@ -21,6 +21,12 @@ export class Pet {
     public mealType: MealType[]
   ) {}
 
+  get ageInYears(): string{
+    const years = Math.floor(this.ageInMonths/12);
+    const months = this.ageInMonths % 12;
+    return `${years} year(s) ${months} month(s)`;
+
+  }
   calculateCalories(): number {
     let multiplier: number = 0;
     switch (this.activityLevel){

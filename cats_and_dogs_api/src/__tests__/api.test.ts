@@ -1,4 +1,4 @@
-import * as request from "supertest"; // ✅
+import * as request from "supertest"; 
 
 import app from "../server"; 
 describe("Pets API", () => {

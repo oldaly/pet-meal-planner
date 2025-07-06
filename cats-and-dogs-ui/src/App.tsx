@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 
 interface Pet {
   name: string;
-  age: number;
+  ageInMonths: number;
+  ageInYears: string;
   species: "dog" | "cat";
   weight: number;
   activityLevel: "low" | "moderate" | "high";
@@ -38,7 +39,7 @@ export default function App() {
           {pets.map((pet) => (
             <li key={pet.name} className="border p-4 rounded-xl shadow-md">
               <h2 className="text-xl font-semibold">{pet.name} ({pet.species})</h2>
-              <p>Age: {pet.age} • Weight: {pet.weight}kg • Activity: {pet.activityLevel}</p>
+              <p>Age: {pet.ageInYears} • Weight: {pet.weight}kg • Activity: {pet.activityLevel}</p>
               <p>Restrictions: {pet.dietaryRestrictions.join(", ") || "None"}</p>
               <p>Allowed Meals: {pet.mealType.join(", ")}</p>
             </li>

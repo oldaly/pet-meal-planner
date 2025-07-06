@@ -13,7 +13,7 @@
     {
         name: "Luna",
         species: "dog",
-        age: 3,
+        ageInMonths: 25,
         weight: 20,
         activityLevel: "moderate",
         dietaryRestrictions: ["grain-free"], 
@@ -22,7 +22,7 @@
     {
         name: "Milo",
         species: "cat",
-        age: 5,
+        ageInMonths: 62,
         weight: 5,
         activityLevel: "low",
         dietaryRestrictions: [],
@@ -32,7 +32,7 @@
 
     const pets = petData.map(p => {
         const pet = new Pet(p.name, 
-        p.age, 
+        p.ageInMonths, 
         p.species as "dog" | "cat", 
         p.weight, 
         p.activityLevel as "low" | "moderate" | "high",

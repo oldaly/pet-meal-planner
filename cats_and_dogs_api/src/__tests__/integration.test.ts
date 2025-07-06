@@ -36,12 +36,12 @@ describe("🐾 Integration Test: PetService + MealPlan + Pet", () => {
     expect(milo).toBeDefined();
 
     if (milo) {
-      milo.age = 6;
+      milo.ageInMonths = 72;
       milo.weight = 6;
 
       planner.generateAll();
 
-      expect(milo.age).toBe(6);
+      expect(milo.ageInMonths).toBe(72);
       expect(milo.weight).toBe(6);
       expect(milo.calculateCalories()).toBe(180);
     }
