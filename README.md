@@ -24,6 +24,10 @@ A full-stack TypeScript app to manage dog and cat meal plans based on age, weigh
 - **Backend (Elastic Beanstalk)**  
   📍 http://cats-and-dogs-api-env.eba-rdmt69m3.ap-southeast-2.elasticbeanstalk.com/api/pets
 
+- **Backend (Lambda)**  
+  📍
+  https://db4xns85if.execute-api.ap-southeast-2.amazonaws.com/Prod/api/pets
+
 ---
 
 ## 🖼️ Tech Stack
