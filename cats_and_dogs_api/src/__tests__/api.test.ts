@@ -1,6 +1,6 @@
 import * as request from "supertest"; 
 
-import app from "../server"; 
+import app from "../app"; 
 describe("Pets API", () => {
   it("should get all pets", async () => {
     const res = await request.default(app).get("/api/pets");
