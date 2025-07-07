@@ -67,7 +67,7 @@ export default function App() {
   if (maxAge) queryParams.append("maxAge", maxAge);
   if (allowedMeals) queryParams.append("allowedMeals", allowedMeals);
 
-  const res = await fetch(`http://cats-and-dogs-api-env.eba-rdmt69m3.ap-southeast-2.elasticbeanstalk.com/api/pets?${queryParams.toString()}`);
+  const res = await fetch(`https://db4xns85if.execute-api.ap-southeast-2.amazonaws.com/Prod/api/pets?${queryParams.toString()}`);
   const data = await res.json();
   setPets(data); // or however you're storing the pets
 };
@@ -84,7 +84,7 @@ export default function App() {
     dietaryRestrictions: newDietaryRestrictions.split(',').map(s => s.trim()).filter(Boolean),
   };
 
-  const res = await fetch("http://cats-and-dogs-api-env.eba-rdmt69m3.ap-southeast-2.elasticbeanstalk.com/api/pets", {
+  const res = await fetch("https://db4xns85if.execute-api.ap-southeast-2.amazonaws.com/Prod/api/pets", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newPet),
@@ -110,7 +110,7 @@ export default function App() {
 
 
   useEffect(() => {
-    fetch("http://cats-and-dogs-api-env.eba-rdmt69m3.ap-southeast-2.elasticbeanstalk.com/api/pets")
+    fetch("https://db4xns85if.execute-api.ap-southeast-2.amazonaws.com/Prod/api/pets")
       .then((res) => res.json())
       .then((data) => {
         setPets(data);
